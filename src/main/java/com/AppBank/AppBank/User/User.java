@@ -1,8 +1,7 @@
 package com.AppBank.AppBank.User;
 
 
-import com.AppBank.AppBank.Transaction.Transaction;
-import com.AppBank.AppBank.entities.Account;
+import com.AppBank.AppBank.Account.Account;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;

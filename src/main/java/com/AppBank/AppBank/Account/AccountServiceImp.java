@@ -1,14 +1,15 @@
-package com.AppBank.AppBank.Services;
+package com.AppBank.AppBank.Account;
 
-import com.AppBank.AppBank.Repositories.AccountRepository;
-import com.AppBank.AppBank.entities.Account;
+import com.AppBank.AppBank.Account.AccountRepository;
+import com.AppBank.AppBank.Account.Account;
+import com.AppBank.AppBank.Account.AccountServiceIfx;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccountServiceImp implements AccountServiceIfx{
+public class AccountServiceImp implements AccountServiceIfx {
     //Dependency injection through constructor as recommended by Spring
     AccountRepository accountRepo;
     public AccountServiceImp(AccountRepository accountRepo) {

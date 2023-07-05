@@ -1,29 +1,63 @@
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (100, '2022-10-31T15:30:00', 1, 10, 2, 1);
+INSERT INTO user (id, first_name, last_name, user_name, password)
+VALUES (1, 'John', 'Smith', 'jsmith', 'mypassword');
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (200, '2022-11-01T09:45:00', 2, 5, 3, 2);
+INSERT INTO user (id, first_name, last_name, user_name, password)
+VALUES (2, 'Jane', 'Doe', 'jdoe', 'letmein');
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (150, '2022-11-02T14:20:00', 3, 8, 1, 3);
+INSERT INTO user (id, first_name, last_name, user_name, password)
+VALUES (3, 'Bob', 'Johnson', 'bjohnson', 'password123');
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (300, '2022-11-03T18:00:00', 2, 12, 3, 4);
+INSERT INTO user (id, first_name, last_name, user_name, password)
+VALUES (4, 'Sarah', 'Lee', 'slee', '123456');
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (250, '2022-11-04T11:10:00', 1, 7, 2, 5);
+INSERT INTO user (id, first_name, last_name, user_name, password)
+VALUES (5, 'David', 'Nguyen', 'dnguyen', 'qwerty');
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (175, '2022-11-05T16:35:00', 3, 9, 1, 6);
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (400, '2022-11-06T20:45:00', 2, 15, 3, 7);
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (1, 'Savings', 5000.0, 1);
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (225, '2022-11-07T13:50:00', 1, 6, 2, 8);
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (2, 'Checking', 2000.0, 1);
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (275, '2022-11-08T10:15:00', 3, 11, 1, 9);
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (3, 'Investment', 10000.0, 1);
 
-INSERT INTO transaction (amount, date, from_account_id, likes, to_account_id, id)
-VALUES (350, '2022-11-09T17:25:00', 2, 14, 3, 10);
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (4, 'Credit Card', -500.0, 1);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (5, 'Savings', 8000.0, 2);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (6, 'Checking', 3000.0, 2);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (7, 'Savings', 8000.0, 2);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (8, 'Checking', 3000.0, 2);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (9, 'Savings', 6000.0, 3);
+
+INSERT INTO account (id, name, balance, owner_id)
+VALUES (10, 'Checking', 4000.0, 3);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (100.0, '2022-10-31 15:30:00', 10, 1, 2);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (500.0, '2022-11-01 14:45:00', 5, 2, 5);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (1000.0, '2022-11-02 10:15:00', 15, 8, 4);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (250.0, '2022-11-03 09:30:00', 3, 6, 7);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (750.0, '2022-11-04 16:00:00', 8, 9, 3);
+
+INSERT INTO transaction (amount, date, likes, account_receiver_id, account_sender_id)
+VALUES (100.0, '2022-11-05 11:30:00', 2, 10, 1);

@@ -1,8 +1,6 @@
-package com.AppBank.AppBank.Services;
+package com.AppBank.AppBank.Account;
 
-import com.AppBank.AppBank.Repositories.AccountRepository;
-import com.AppBank.AppBank.entities.Account;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.AppBank.AppBank.Account.Account;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,5 @@
-package com.AppBank.AppBank.Controllers;
+package com.AppBank.AppBank.Account;
 
-import com.AppBank.AppBank.Services.AccountServiceIfx;
-import com.AppBank.AppBank.Services.AccountServiceImp;
-import com.AppBank.AppBank.entities.Account;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

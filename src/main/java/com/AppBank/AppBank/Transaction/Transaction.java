@@ -1,15 +1,10 @@
 package com.AppBank.AppBank.Transaction;
 
-import com.AppBank.AppBank.User.User;
-import com.AppBank.AppBank.entities.Account;
+import com.AppBank.AppBank.Account.Account;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table
@@ -17,17 +12,18 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Transaction {
     @Id
-    @SequenceGenerator(
-            name = "transaction_id_seq",
-            sequenceName = "transaction_id_seq",
-            allocationSize = 1
-    )
+//    @SequenceGenerator(
+//            name = "transaction_id_seq",
+//            sequenceName = "transaction_id_seq",
+//            allocationSize = 1
+//    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "transaction_id_seq"
+            strategy = GenerationType.IDENTITY
+//            ,generator = "transaction_id_seq"
     )
 
 
@@ -50,6 +46,7 @@ private Integer likes;
 @ManyToOne
 @JoinColumn(name="accountSender_id")
 private Account accountSender;
+
 @ManyToOne
 @JoinColumn(name="accountReceiver_id")
 private Account accountReceiver;

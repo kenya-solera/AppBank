@@ -1,4 +1,4 @@
-package com.AppBank.AppBank.entities;
+package com.AppBank.AppBank.Account;
 
 import com.AppBank.AppBank.Transaction.Transaction;
 import com.AppBank.AppBank.User.User;
@@ -12,18 +12,17 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
     private String name;
 
     private BigDecimal balance; //using BigDecimal because it is more precise for financial operations
 
-    @NonNull
     @ManyToOne
     @JoinColumn(name="owner_id")
     private User owner;
