@@ -1,9 +1,13 @@
 package com.AppBank.AppBank.User;
 
 
+import com.AppBank.AppBank.Transaction.Transaction;
+import com.AppBank.AppBank.entities.Account;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -15,32 +19,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class User {
 
     @Id
-//    @SequenceGenerator(
-//            name = "user",
-//            sequenceName = "user_seq",
-//            allocationSize = 1
-//    )
+    @SequenceGenerator(
+            name = "user",
+            sequenceName = "user_seq",
+            allocationSize = 1
+    )
 
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
-//            ,generator = "user_seq"
+            ,generator = "user_seq"
     )
 
     private Long id;
 
-//    @Column(name = "FirstName", columnDefinition = "VARCHAR(225)")
     private String FirstName;
-//    @Column(name = "LastName", columnDefinition = "VARCHAR(225)")
 
     private String LastName;
 
-//    @Column(name = "userName", columnDefinition = "VARCHAR(225)")
-
     private String userName;
 
-//    @Column(name = "password", columnDefinition = "VARCHAR(225)")
-
     private String password;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Account> accounts;
 
 
 //    public User(){
