@@ -9,44 +9,35 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userSrvc;
 
 
     @GetMapping
     public Iterable<User> getUsers() {
-        return userRepository.findAll();
+        return userSrvc.getUsers();
     }
 
 
     @GetMapping("/{id}")
-    public User getUserById(
-            @PathVariable("id") Long id) {
-        return userRepository.findById(id).orElse(null);
+    public User getUserById(@PathVariable("id") Long id) {
+        return userSrvc.getUserById(id);
     }
 
 
     @PostMapping
     public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+        return userSrvc.createUser(user);
     }
 
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable("id") Long id, @RequestBody User updatedUser) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            user.setFirstName(updatedUser.getFirstName());
-            user.setLastName(updatedUser.getLastName());
-            user.setUserName(updatedUser.getUserName());
-            user.setPassword(updatedUser.getPassword());
-            return userRepository.save(user);
-        }
-        return null;
+        return userSrvc.updateUser(id, updatedUser);
     }
 
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
-        userRepository.deleteById(id);
+        userSrvc.deleteUser(id);
     }
 }
