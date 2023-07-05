@@ -14,7 +14,7 @@ function App() {
 <Router>
 <Routes>
   <Route exact path="/Signup" element={<Signup/>}/>
-  <Route exact path="/User" element={<User/>}/>
+  <Route exact path="/" element={<User/>}/>
   <Route exact path="/BankAccounts" element={<BankAccounts/>}/>
   <Route exact path="/Personal" element={<Personal/>}/>
   <Route exact path="/Transaction" element={<Transaction/>}/>

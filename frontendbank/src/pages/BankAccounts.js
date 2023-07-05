@@ -2,9 +2,10 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 import {Link, useParams} from 'react-router-dom';
+import {useState, useEffect} from 'react';
 
 export default function BankAccounts() {
-    const [accounts, setAccounts] = useState([]);
+    const [account, setAccount] = useState([]);
 
     const {id} = useParams()
 
@@ -18,17 +19,17 @@ export default function BankAccounts() {
 
         const result = await axios.get("http://localhost:8081/accounts")
 
-        setStudents(result.data);
+        setAccount(result.data);
 
     }
 
-    const deleteStudent = async (id) => {
+    // const deleteAccount = async (id) => {
 
-      const result = await axios.delete(`http://localhost:8081/api/v1/student/${id}`)
+    //   const result = await axios.delete(`http://localhost:8081/accounts/${id}`)
 
-      loadAccounts()
+    //   loadAccounts()
 
-    }
+    // }
   return (
     <div className="container text-center">
       <div className="row">
@@ -54,38 +55,38 @@ export default function BankAccounts() {
             </thead>
 
             <tbody>
-              {students.map((student, index) => (
+              {account.map((account, index) => (
                 <tr>
-                  <th scope="row" key={student.id}>
-                    {student.id}
+                  <th scope="row" key={account.id}>
+                    {account.id}
                   </th>
 
-                  <td>{student.name}</td>
+                  <td>{account.name}</td>
 
-                  <td>{student.email}</td>
+                  <td>{account.email}</td>
 
-                  <td>{student.dob}</td>
+                  <td>{account.dob}</td>
 
-                  <td>{student.age}</td>
+                  <td>{account.age}</td>
 
                   <td>
                     <Link
                       className="btn btn-outline-dark mx-2"
-                      to={`ViewStudent/${student.id}`}
+                      to={`Viewaccount/${account.id}`}
                     >
                       View
                     </Link>
 
                     <Link
                       className="btn btn-outline-warning mx-2"
-                      to={`EditStudent/${student.id}`}
+                      to={`Editaccount/${account.id}`}
                     >
                       Edit
                     </Link>
 
                     <button
                       className="btn btn-outline-danger mx-2"
-                      onClick={() => deleteStudent(student.id)}
+                      // onClick={() => deleteaccount(account.id)}
                     >
                       Delete
                     </button>
