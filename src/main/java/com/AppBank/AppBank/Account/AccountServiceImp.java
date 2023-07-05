@@ -1,8 +1,5 @@
 package com.AppBank.AppBank.Account;
 
-import com.AppBank.AppBank.Account.AccountRepository;
-import com.AppBank.AppBank.Account.Account;
-import com.AppBank.AppBank.Account.AccountServiceIfx;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

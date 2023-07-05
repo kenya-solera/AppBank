@@ -1,6 +1,5 @@
 package com.AppBank.AppBank.Account;
 
-import com.AppBank.AppBank.Account.Account;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
