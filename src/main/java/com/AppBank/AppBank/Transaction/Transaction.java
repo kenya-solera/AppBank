@@ -22,7 +22,7 @@ public class Transaction {
 
 private Long id;
 
-private String transactionId;
+private String transaction_id;
 
 private Double amount;
 
@@ -40,13 +40,13 @@ private Integer likes;
 //@JoinColumn(name = "account_id")
 //private Account account;
 
-}
+
 
 public Transaction(){}
 
-public Transaction(Long id, String transactionId, Double amount, Long from_account_id, Long to_account_id,){
+public Transaction(Long id, String transaction_id, Double amount, Long from_account_id, Long to_account_id){
         this.id = id;
-        this.transactionId = transactionId;
+        this.transaction_id = transaction_id;
         this.amount = amount;
         this.from_account_id = from_account_id;
         this.to_account_id = to_account_id;
@@ -63,11 +63,11 @@ public Transaction(Long id, String transactionId, Double amount, Long from_accou
     }
 
     public String getTransactionId() {
-        return transactionId;
+        return transaction_id;
     }
 
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
+    public void setTransactionId(String transaction_id) {
+        this.transaction_id = transaction_id;
     }
 
     public Double getAmount() {
@@ -114,7 +114,7 @@ public Transaction(Long id, String transactionId, Double amount, Long from_accou
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", transactionId='" + transactionId + '\'' +
+                ", transactionId='" + transaction_id + '\'' +
                 ", amount=" + amount +
                 ", from_account_id=" + from_account_id +
                 ", to_id=" + to_account_id +
@@ -123,4 +123,5 @@ public Transaction(Long id, String transactionId, Double amount, Long from_accou
                 '}';
     }
 }
+
 
