@@ -1,4 +1,4 @@
-package com.AppBank.AppBank;
+package User;
 
 public class UserConfig {
 }

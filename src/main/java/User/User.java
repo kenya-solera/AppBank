@@ -1,4 +1,4 @@
-package com.AppBank.AppBank;
+package User;
 
 import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.ResponseBody;
