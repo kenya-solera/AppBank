@@ -2,6 +2,8 @@ package com.AppBank.AppBank.Account;
 
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.AccountNotFoundException;
+import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +18,7 @@ public class AccountServiceImp implements AccountServiceIfx {
     @Override
     public Account saveAccount(Account account) throws Exception {
         if(account == null) {
-            throw new Exception("account cannot be empty");
+            throw new InvalidParameterException("account cannot be empty");
         }
         accountRepo.save(account);
         return account;
@@ -31,7 +33,7 @@ public class AccountServiceImp implements AccountServiceIfx {
     public Account findAccountById(Long id) throws Exception {
         Optional<Account> accountOp = accountRepo.findById(id);
         if(accountOp.isEmpty()){
-            throw new Exception("Account not found");
+            throw new AccountNotFoundException("Account not found");
         }
         return accountOp.get();
     }
@@ -41,15 +43,15 @@ public class AccountServiceImp implements AccountServiceIfx {
         Optional<Account> updatedAccOp = accountRepo.findById(id);
 
         if(updatedAccOp.isEmpty()){
-            throw new Exception("Account not found");
+            throw new IllegalArgumentException("Account not found");
         }
         Account updatedAccount = updatedAccOp.get();
 
         updatedAccount.setName(account.getName());
         updatedAccount.setBalance(account.getBalance());
-        //updatedAccount.setTransactions(account.getTransactions());
+        updatedAccount.setTransactions(account.getTransactions());
         //TODO: make sure only admins can change owners, not the clients
-        //updatedAccount.setOwner(account.getOwner());
+        updatedAccount.setOwner(account.getOwner());
 
         return updatedAccount;
     }
