@@ -10,8 +10,19 @@ public class TransactionConfig {
     @Bean
     CommandLineRunner commandLineRunner(TransactionRepository repository) {
         return args -> {
-            repository.save(new Transaction(1L, 10L, 100L, 1000L, 10000L));
-            repository.save(new Transaction(2L, 20L, 200L, 2000L, 20000L));
+            Transaction transacion1 = (new Transaction(
+                    1L,
+                    "1A",
+                    100d,
+                    1000L,
+                    10000L)
+            );
+            Transaction transaction2 = (new Transaction(
+                    2L,
+                    "2A",
+                    200d,
+                    2000L,
+                    20000L));
         };
     }
 }

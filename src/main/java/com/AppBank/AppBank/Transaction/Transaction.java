@@ -26,9 +26,9 @@ private String transactionId;
 
 private Double amount;
 
-private Long from_id;
+private Long from_account_id;
 
-private Long to_id;
+private Long to_account_id;
 
 private LocalDateTime date;
 
@@ -44,12 +44,12 @@ private Integer likes;
 
 public Transaction(){}
 
-public Transaction(Long id, String transactionId, Double amount, Long from_id, Long to_id,){
+public Transaction(Long id, String transactionId, Double amount, Long from_account_id, Long to_account_id,){
         this.id = id;
         this.transactionId = transactionId;
         this.amount = amount;
-        this.from_id = from_id;
-        this.to_id = to_id;
+        this.from_account_id = from_account_id;
+        this.to_account_id = to_account_id;
         this.date = LocalDateTime.now();
         this.likes = 0;
         }
@@ -79,19 +79,19 @@ public Transaction(Long id, String transactionId, Double amount, Long from_id, L
     }
 
     public Long getFrom_id() {
-        return from_id;
+        return from_account_id;
     }
 
     public void setFrom_id(Long from_id) {
-        this.from_id = from_id;
+        this.from_account_id = from_id;
     }
 
     public Long getTo_id() {
-        return to_id;
+        return to_account_id;
     }
 
     public void setTo_id(Long to_id) {
-        this.to_id = to_id;
+        this.to_account_id = to_id;
     }
 
     public LocalDateTime getDate() {
@@ -116,8 +116,8 @@ public Transaction(Long id, String transactionId, Double amount, Long from_id, L
                 "id=" + id +
                 ", transactionId='" + transactionId + '\'' +
                 ", amount=" + amount +
-                ", from_id=" + from_id +
-                ", to_id=" + to_id +
+                ", from_account_id=" + from_account_id +
+                ", to_id=" + to_account_id +
                 ", date=" + date +
                 ", likes=" + likes +
                 '}';
