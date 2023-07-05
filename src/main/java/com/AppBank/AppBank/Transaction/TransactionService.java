@@ -19,23 +19,25 @@ public class TransactionService {
     public List<Transaction> findAll() {
         return transactionRepository.findAll();
     }
-    public void addNewTransaction(Transaction transaction) {
+    public Transaction addNewTransaction(Transaction transaction) {
         Optional<Transaction> transactionOptional = transactionRepository
-                .findTransactionByTransactionId(transaction.getTransactionId());
+                .findById(transaction.getId());
         if(transactionOptional.isPresent()){
             throw new IllegalStateException("Transaction already exists");
     }
-        transactionRepository.save(transaction);
+        return transactionRepository.save(transaction);
     }
 
-    public Transaction findTransactionById(String transactionId) {
-        return transactionRepository.findTransactionByTransactionId(transactionId).orElseThrow(() -> new IllegalStateException("Transaction not found"));
+    public Transaction findTransactionById(Long id) {
+        return transactionRepository.findById(id).orElseThrow(() -> new IllegalStateException("Transaction not found"));
     }
 
     public List<Transaction>  getAllTransactions()
         {
             return transactionRepository.findAll();
         }
+
+
 }
 
 

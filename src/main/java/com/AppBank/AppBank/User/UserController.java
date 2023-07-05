@@ -1,9 +1,8 @@
-package User;
+package com.AppBank.AppBank.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders ="*")
 @RestController
 @RequestMapping("/users")
@@ -38,7 +37,7 @@ public class UserController {
         if (user != null) {
             user.setFirstName(updatedUser.getFirstName());
             user.setLastName(updatedUser.getLastName());
-            user.setName(updatedUser.getName());
+            user.setUserName(updatedUser.getUserName());
             user.setPassword(updatedUser.getPassword());
             return userRepository.save(user);
         }

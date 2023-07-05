@@ -49,9 +49,9 @@ public class AccountServiceImp implements AccountServiceIfx{
 
         updatedAccount.setName(account.getName());
         updatedAccount.setBalance(account.getBalance());
-        updatedAccount.setTransactions(account.getTransactions());
+        //updatedAccount.setTransactions(account.getTransactions());
         //TODO: make sure only admins can change owners, not the clients
-        updatedAccount.setOwner(account.getOwner());
+        //updatedAccount.setOwner(account.getOwner());
 
         return updatedAccount;
     }

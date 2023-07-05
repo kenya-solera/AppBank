@@ -1,7 +1,7 @@
 package com.AppBank.AppBank.entities;
 
 import com.AppBank.AppBank.Transaction.Transaction;
-import com.AppBank.AppBank.User;
+import com.AppBank.AppBank.User.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,12 +26,10 @@ public class Account {
 
     private BigDecimal balance; //using BigDecimal because it is more precise for financial operations
 
-    @NonNull
+    //@NonNull
     //Connect to user: many to one
-    private User owner;
+    //private User owner;
     //Connect to transactions: many to many
-    private List<Transaction> transactions;
-
-
+    //private List<Transaction> transactions;
 
 }

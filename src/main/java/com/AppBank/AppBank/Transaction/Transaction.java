@@ -22,7 +22,7 @@ public class Transaction {
 
 private Long id;
 
-private String transaction_id;
+//private String transaction_id;
 
 private Double amount;
 
@@ -44,9 +44,9 @@ private Integer likes;
 
 public Transaction(){}
 
-public Transaction(Long id, String transaction_id, Double amount, Long from_account_id, Long to_account_id){
+public Transaction(Long id, /*String transaction_id,*/ Double amount, Long from_account_id, Long to_account_id){
         this.id = id;
-        this.transaction_id = transaction_id;
+        //this.transaction_id = transaction_id;
         this.amount = amount;
         this.from_account_id = from_account_id;
         this.to_account_id = to_account_id;
@@ -62,13 +62,13 @@ public Transaction(Long id, String transaction_id, Double amount, Long from_acco
         this.id = id;
     }
 
-    public String getTransactionId() {
-        return transaction_id;
-    }
+//    public String getTransactionId() {
+//        return transaction_id;
+//    }
 
-    public void setTransactionId(String transaction_id) {
-        this.transaction_id = transaction_id;
-    }
+//    public void setTransactionId(String transaction_id) {
+//        this.transaction_id = transaction_id;
+//    }
 
     public Double getAmount() {
         return amount;
@@ -114,7 +114,7 @@ public Transaction(Long id, String transaction_id, Double amount, Long from_acco
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", transactionId='" + transaction_id + '\'' +
+                //", transactionId='" + transaction_id + '\'' +
                 ", amount=" + amount +
                 ", from_account_id=" + from_account_id +
                 ", to_id=" + to_account_id +

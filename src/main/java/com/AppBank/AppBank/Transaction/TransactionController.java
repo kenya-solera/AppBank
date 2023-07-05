@@ -23,7 +23,12 @@ public class TransactionController {
     }
 
     @GetMapping(path = "/{id}")
-    public Transaction getTransactionById(@PathVariable String transaction_id) {
-        return transactionService.findTransactionById(transaction_id);
+    public Transaction getTransactionById(@PathVariable Long id) {
+        return transactionService.findTransactionById(id);
+    }
+
+    @PostMapping
+    public Transaction createTransaction(@RequestBody Transaction transaction){
+        return transactionService.addNewTransaction(transaction);
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 public class AccountController {
 
     AccountServiceImp accountSrvc;
@@ -17,7 +17,7 @@ public class AccountController {
         this.accountSrvc = accountSrvc;
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Account> seeAllAccounts(){
         return accountSrvc.findAll();
     }
@@ -28,13 +28,13 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account newAccount(Account account) throws Exception {
+    public Account newAccount(@RequestBody Account account) throws Exception {
         accountSrvc.saveAccount(account);
         return account;
     }
 
     @PutMapping("/{id}")
-    public Account editAccount(@PathVariable Long id, Account account) throws Exception {
+    public Account editAccount(@PathVariable Long id, @RequestBody Account account) throws Exception {
         accountSrvc.updateAccount(id, account);
         return account;
     }
