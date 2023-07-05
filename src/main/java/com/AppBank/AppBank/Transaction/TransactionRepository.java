@@ -1,4 +1,12 @@
 package com.AppBank.AppBank.Transaction;
 
-public interface TransactionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    Optional<Transaction> findTransactionByTransactionId(String transaction_Id);
+
 }
