@@ -42,6 +42,8 @@ public class UserService {
             user.setLastName(updatedUser.getLastName());
             user.setUserName(updatedUser.getUserName());
             user.setPassword(updatedUser.getPassword());
+            user.setEmail(updatedUser.getEmail());
+            user.setPhoneNumber(updatedUser.getPhoneNumber());
             return userRepository.save(user);
         }
         throw new IllegalStateException("User not found");
