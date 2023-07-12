@@ -14,3 +14,7 @@ If all this is set up properly, the app should run and do the rest. All the tabl
 - Make it pretty!
 - More validation
 - Testing
+
+## Quick note on commits
+
+Although we have all worked a little bit on everything, commits have mainly come from Maria´s user for front-end changes, and Kenya's user for back-end. However, this is not fully represantive of the work done by each since we are sitting all together and collaborating constantly, often on the same computer. 
