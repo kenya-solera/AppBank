@@ -13,6 +13,9 @@ VALUES (4, 'Sarah', 'Lee', 'slee', '123456');
 INSERT INTO user (id, first_name, last_name, user_name, password)
 VALUES (5, 'David', 'Nguyen', 'dnguyen', 'qwerty');
 
+INSERT INTO user (id, first_name, last_name, user_name, password, phone_number)
+VALUES (6, 'Lady', 'Gaga', 'solera@solera.com','bootcamp2', '123-456-789');
+
 --
 --INSERT INTO account (id, name, balance, owner_id)
 --VALUES (1, 'Savings', 5000.0, 1);

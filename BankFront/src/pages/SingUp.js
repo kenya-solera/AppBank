@@ -15,13 +15,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import {useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import { ExitToAppSharp } from '@mui/icons-material';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
-
-
 
 
 export default function SignIn() {
@@ -36,16 +35,24 @@ export default function SignIn() {
     password:""
     });
 
+
+    // TODO: try catch para ver si la transacción es 200
+    // función comprobar contraseñas coinciden
+    // función comprobar contraseña cumple seguridad
+    // función comprobar nombre tiene mas un caracter
+    // función comprobar apellido tiene más de un caracter
+    
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post("http://localhost:8081/users", user)
-  ;
+    await axios.post("http://localhost:8081/users", user);
+    navigate(login)
   };
 
   const {firstName, lastName, userName, password} = user;
 
   const onInpuChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    
   };
 
 

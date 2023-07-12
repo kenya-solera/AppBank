@@ -7,7 +7,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import SignIn from './pages/SingUp';
-import User from './pages/User';
+import Login from './pages/Login';
+import UserSettings from './pages/UserSettings';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<SignIn/>}/>
-        <Route exact path="/user" element={<User/>}/>
+        <Route exact path= "/login" element={<Login/>}> </Route>
+        <Route exact path="/user/settings/:id" element={<UserSettings/>}/>
       </Routes>
       
     </Router>
