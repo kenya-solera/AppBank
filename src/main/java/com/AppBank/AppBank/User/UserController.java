@@ -23,6 +23,11 @@ public class UserController {
         return userSrvc.getUserById(id);
     }
 
+    @GetMapping("/get/{userName}")
+    public User getUserByUsername(@PathVariable("userName") String userName) {
+        return userSrvc.getUserByUserName(userName);
+    }
+
 
     @PostMapping
     public User createUser(@RequestBody User user) {
