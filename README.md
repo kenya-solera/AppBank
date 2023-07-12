@@ -1,10 +1,16 @@
 # AppBank
 
-We have worked on this for the whole day. Having more experience with backend, we have been successful at implementing the API.
+## Database connection
 
-We have also put a lot of work into the frontend part, although it is simpler given it was our first time doing anything like it. 
+We have configured a mySQL database with this app. To run the app you will need to locally create this database.
 
-We are aware that there are many things missing: given, being able to successfully send HTTP requests from the frontend to the API to interact with the Database, 
-as well as aesthetic changes.
+Create a database called "appbank", and add a new user "Admin" with all privileges. Set the password for Admin to "Password1234*". Make sure your mySQL server is using port 3306. You can check all of these details on the application.properties file inside resources.  
 
-Thank you. 
+If all this is set up properly, the app should run and do the rest. All the tables and fields will be filled out when you run the application. 
+
+## Future improvements
+
+- Security
+- Make it pretty!
+- More validation
+- Testing
