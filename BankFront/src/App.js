@@ -11,19 +11,26 @@ import Login from './pages/Login';
 import UserSettings from './pages/UserSettings';
 import Account from './pages/Account';
 import Transactions from './pages/Transactions';
+import Store from './contexts/Store';
+import { AuthProvider } from './contexts/AuthContext';
 
 
 function App() {
   return (
+    <AuthProvider>
+    <Store>
     <Router>
       <Routes>
         <Route exact path="/" element={<SignIn/>}/>
         <Route exact path= "/login" element={<Login/>}> </Route>
         <Route exact path="/user/settings/:id" element={<UserSettings/>}/>
         <Route exact path="/personal" element={<Transactions/>}/>
+        <Route exact path="/account" element ={<Account/>} />
+        <Route exact path="/personal" element={<Transactions/>}/>
       </Routes>
-      
     </Router>
+    </Store>
+    </AuthProvider>
   );
 }
 
