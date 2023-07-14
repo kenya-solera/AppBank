@@ -2,6 +2,7 @@ package com.AppBank.AppBank.User;
 
 
 import com.AppBank.AppBank.Account.Account;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,11 +31,10 @@ public class User {
 
     private String password;
 
-    private String email;
-
     private String phoneNumber;
 
     @OneToMany(mappedBy = "owner")
+    @JsonManagedReference
     private List<Account> accounts;
 
 }

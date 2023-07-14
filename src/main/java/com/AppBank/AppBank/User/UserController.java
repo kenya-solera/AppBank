@@ -1,6 +1,8 @@
 package com.AppBank.AppBank.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", allowedHeaders ="*")
@@ -21,6 +23,17 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable("id") Long id) {
         return userSrvc.getUserById(id);
+    }
+
+    @GetMapping("/get/{userName}")
+    public Object getUserByUsername(@PathVariable("userName") String userName) {
+        User usu = userSrvc.getUserByUserName(userName);
+
+        if (usu == null || usu.getUserName().isEmpty()) {
+            return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+        }
+
+        return usu;
     }
 
 

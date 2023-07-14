@@ -2,6 +2,8 @@ package com.AppBank.AppBank.Account;
 
 import com.AppBank.AppBank.Transaction.Transaction;
 import com.AppBank.AppBank.User.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,12 +27,14 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name="owner_id")
+    @JsonBackReference
     private User owner;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "account_transaction",
     joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "account_id", referencedColumnName = "id"))
+    @JsonManagedReference
     private List<Transaction> transactions;
 
 }

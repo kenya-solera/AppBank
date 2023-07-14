@@ -31,6 +31,10 @@ public class UserService {
         return userOp.get();
     }
 
+    public User getUserByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -42,7 +46,6 @@ public class UserService {
             user.setLastName(updatedUser.getLastName());
             user.setUserName(updatedUser.getUserName());
             user.setPassword(updatedUser.getPassword());
-            user.setEmail(updatedUser.getEmail());
             user.setPhoneNumber(updatedUser.getPhoneNumber());
             return userRepository.save(user);
         }
