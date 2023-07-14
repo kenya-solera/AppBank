@@ -18,7 +18,8 @@ import {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import { ExitToAppSharp } from '@mui/icons-material';
 import {AuthProvider} from '../contexts/AuthContext';
-import AuthContext from '../contexts/AuthContext'
+import AuthContext from '../contexts/AuthContext';
+import Store from '../contexts/Store';
 
 const defaultTheme = createTheme();
 export default function UserSettings() {
@@ -49,7 +50,7 @@ export default function UserSettings() {
     
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post("http://localhost:8081/users", user);
+    await axios.get("http://localhost:8081/users", user);
     navigate("/user/settings")
   };
 

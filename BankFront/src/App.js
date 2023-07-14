@@ -22,6 +22,8 @@ function App() {
         <Route exact path="/" element={<SignIn/>}/>
         <Route exact path= "/login" element={<Login/>}> </Route>
         <Route exact path="/user/settings/:id" element={<UserSettings/>}/>
+        <Route exact path="/account" element ={<Account/>} />
+        <Route exact path="/personal" element={<Transactions/>}/>
       </Routes>
     </Router>
     </Store>

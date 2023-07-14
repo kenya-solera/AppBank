@@ -39,9 +39,15 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     logIn(user);
-    console.log(user);
+    //console.log(user);
     handleAuth(auth);
-    navigate(`/user/settings/${user.id}`);
+    if(auth){
+        console.log("usuario autenticado");
+        navigate(`/user/settings/${user.id}`)
+      }
+    else
+      console.log("Las contraseñas no coiniden")
+
   };
   
   const {userName} = useParams();

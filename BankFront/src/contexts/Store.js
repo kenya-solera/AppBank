@@ -9,7 +9,7 @@ function Store({ children }) {
         });
   useEffect(() => {
     axios
-      .get("http://localhost:8081/users/get/{userName}")
+      .get(`http://localhost:8081/users/get/{userName}`)
       .then((res) => {
         setUser(res.data)
       })

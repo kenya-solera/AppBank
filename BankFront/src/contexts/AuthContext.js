@@ -5,16 +5,28 @@ const AuthContext = createContext();
 
 const initialAuth = false;
 
-
+let dataPassword;
 export const AuthProvider = ({children}) => {
 
     const [auth, setAuth] = useState(initialAuth);
+    const [backendPassword, setBackendPassword] = useState();
 
-    function logIn(user){
+    async function logIn(user){
+        console.log(user.userName);
         try {
-            axios.get('http://localhost:8081/users', user.userName);
-            setAuth(true);
-            console.log(user);
+            const response = await axios.get(`http://localhost:8081/users/get/${user.userName}`)
+            
+            console.log(response.data.password);
+            setBackendPassword(await response.data.password);
+            console.log("backendpasword:" + backendPassword)
+            if(backendPassword === user.password){
+                
+                setAuth(true);
+                console.log("Usuario autenticado")
+            }
+            else
+                console.log("usuario no autenticado");
+            
         } catch (error) {
             console.log("Usuario no encontrado");
         }
