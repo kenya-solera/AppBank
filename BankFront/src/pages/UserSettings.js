@@ -17,10 +17,13 @@ import axios from 'axios';
 import {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import { ExitToAppSharp } from '@mui/icons-material';
+import {AuthProvider} from '../contexts/AuthContext';
+import AuthContext from '../contexts/AuthContext'
 
 const defaultTheme = createTheme();
 export default function UserSettings() {
   let navigate = useNavigate()
+  const {auth,handleAuth} = useState(AuthContext);
 
   const [user, setUser] = useState({
     firstName:"",
@@ -29,9 +32,10 @@ export default function UserSettings() {
     email:"",
     phoneNumber:""
     });
+    console.log(user);
 
   const loadUser = async () => {
-      await axios.get("http://localhost:8081/users", user);
+
   };
   loadUser();
   
@@ -57,6 +61,7 @@ export default function UserSettings() {
   };
   return (
     <div>
+      <AuthProvider>
       <SideBar/>
       <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -74,7 +79,7 @@ export default function UserSettings() {
           </Avatar> */}
           <h2>Real World App</h2>
           <Typography component="h5" variant="h5">
-            Sign Up
+            Settings
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -133,6 +138,7 @@ export default function UserSettings() {
         </Box>
       </Container>
     </ThemeProvider>
+    </AuthProvider>
     </div>
   )
 }

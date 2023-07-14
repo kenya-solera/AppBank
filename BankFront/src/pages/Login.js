@@ -13,18 +13,23 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import { ExitToAppSharp } from '@mui/icons-material';
+import {AuthProvider} from '../contexts/AuthContext';
+import AuthContext from '../contexts/AuthContext'
 
+
+//console.log(AuthProvider)
 
 const defaultTheme = createTheme();
 
 export default function Login() {
 
+  const {auth, handleAuth, logIn} = useContext(AuthContext); 
   
   let navigate = useNavigate()
-
+  
   const [user, setUser] = useState({
     userName:"",
     password:""
@@ -33,16 +38,15 @@ export default function Login() {
     
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.get("http://localhost:8081/users", user);
+    logIn(user);
     console.log(user);
-    navigate(`/user/settings/${user.id}`)
+    handleAuth(auth);
+    navigate(`/user/settings/${user.id}`);
   };
   
   const {userName} = useParams();
 
   const {password} = user;
-
-  
 
   const onInpuChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -100,7 +104,7 @@ export default function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Log In
             </Button>
           </Box>
         </Box>
