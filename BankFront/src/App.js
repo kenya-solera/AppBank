@@ -9,6 +9,7 @@ import '@fontsource/roboto/700.css';
 import SignIn from './pages/SingUp';
 import Login from './pages/Login';
 import UserSettings from './pages/UserSettings';
+import Account from './pages/Account';
 import Transactions from './pages/Transactions';
 
 
