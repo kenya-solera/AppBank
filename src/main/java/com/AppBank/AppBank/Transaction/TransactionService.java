@@ -3,6 +3,7 @@ package com.AppBank.AppBank.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,21 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public List<Transaction> findAll() {
-        return transactionRepository.findAll();
+    private List<TransactionDTO> transactionToDTO(List<Transaction> transactions) {
+        List<TransactionDTO> result = new ArrayList<TransactionDTO>();
+        for(Transaction tx : transactions) {
+            String description = tx.getAccountSender().getOwner().getFirstName()
+                    + " sent " + tx.getAccountReceiver().getOwner().getFirstName();
+
+            TransactionDTO transactionDTO = new TransactionDTO(tx.getId(), description, tx.getLikes(), tx.getAmount(), tx.getPhoto());
+            result.add(transactionDTO);
+        }
+
+        return result;
+    }
+    public List<TransactionDTO> findAllTransactions() {
+        List<Transaction> transactions = transactionRepository.findAll();
+        return transactionToDTO(transactions);
     }
     public Transaction addNewTransaction(Transaction transaction) {
         Optional<Transaction> transactionOptional = transactionRepository
@@ -36,7 +50,6 @@ public class TransactionService {
         {
             return transactionRepository.findAll();
         }
-
 
 }
 
