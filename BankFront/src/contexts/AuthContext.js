@@ -24,22 +24,17 @@ export const AuthProvider = ({children}) => {
                 setAuth(true);
                 console.log("Usuario autenticado")
             }
-            else
+            else{
                 console.log("usuario no autenticado");
+                setAuth(false)
+            }
             
         } catch (error) {
             console.log("Usuario no encontrado");
         }
     }
 
-    const handleAuth = (e) => {
-        if(auth){
-            setAuth(false);
-        }else{
-            setAuth(true);
-        }
-    }
-   const data = {auth, handleAuth, logIn};
+    const data = {auth, logIn};
 
     return <AuthContext.Provider value = {data}>{children}</AuthContext.Provider>;
 };

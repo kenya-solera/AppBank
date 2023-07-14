@@ -26,7 +26,7 @@ const defaultTheme = createTheme();
 
 export default function Login() {
 
-  const {auth, handleAuth, logIn} = useContext(AuthContext); 
+  const {auth, logIn} = useContext(AuthContext); 
   
   let navigate = useNavigate()
   
@@ -40,10 +40,9 @@ export default function Login() {
     event.preventDefault();
     logIn(user);
     //console.log(user);
-    handleAuth(auth);
     if(auth){
+      navigate(`/user/settings/${user.id}`)
         console.log("usuario autenticado");
-        navigate(`/user/settings/${user.id}`)
       }
     else
       console.log("Las contraseñas no coiniden")
