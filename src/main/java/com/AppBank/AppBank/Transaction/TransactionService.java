@@ -1,6 +1,10 @@
 package com.AppBank.AppBank.Transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +22,7 @@ public class TransactionService {
     }
 
     private List<TransactionDTO> transactionToDTO(List<Transaction> transactions) {
-        List<TransactionDTO> result = new ArrayList<TransactionDTO>();
+        List<TransactionDTO> result = new ArrayList<>();
         for(Transaction tx : transactions) {
             String description = tx.getAccountSender().getOwner().getFirstName()
                     + " sent " + tx.getAccountReceiver().getOwner().getFirstName();
@@ -34,16 +38,24 @@ public class TransactionService {
         return transactionToDTO(transactions);
     }
     public Transaction addNewTransaction(Transaction transaction) {
+        if (transaction.getId() != null) {
         Optional<Transaction> transactionOptional = transactionRepository
                 .findById(transaction.getId());
         if(transactionOptional.isPresent()){
             throw new IllegalStateException("Transaction already exists");
-    }
+    }}
         return transactionRepository.save(transaction);
     }
 
-    public Transaction findTransactionById(Long id) {
-        return transactionRepository.findById(id).orElseThrow(() -> new IllegalStateException("Transaction not found"));
+    public ResponseEntity<?> findTransactionById(Long id) {
+        Optional<Transaction> transaction = transactionRepository.findById(id);
+        if (transaction.isPresent()) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            return new ResponseEntity<>(transaction.get(), headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     public List<Transaction>  getAllTransactions()
@@ -51,6 +63,9 @@ public class TransactionService {
             return transactionRepository.findAll();
         }
 
+    public void deleteTransaction(Long id){
+        transactionRepository.deleteById(id);
+    }
 }
 
 

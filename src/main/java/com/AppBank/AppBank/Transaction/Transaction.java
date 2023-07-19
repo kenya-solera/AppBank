@@ -2,7 +2,6 @@ package com.AppBank.AppBank.Transaction;
 
 import com.AppBank.AppBank.Account.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,6 +46,11 @@ private Account accountSender;
 @JsonBackReference
 private Account accountReceiver;
 
+
+    public Transaction(Double amount, LocalDateTime date) {
+        this.amount = amount;
+        this.date = date;
+    }
 }
 
 
