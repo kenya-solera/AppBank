@@ -32,10 +32,22 @@ public class UserService {
     }
 
     public User getUserByUserName(String userName) {
-        return userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName);
+
+        if(user == null){
+            throw new IllegalStateException("User not found");
+        }
+
+        return user;
     }
 
     public User createUser(User user) {
+        User possiblyExistingUser = userRepository.findByUserName(user.getUserName());
+
+        if(possiblyExistingUser!= null){
+            throw new IllegalStateException("User already exists");
+        }
+
         return userRepository.save(user);
     }
 
